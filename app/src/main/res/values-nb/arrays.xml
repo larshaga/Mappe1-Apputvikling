@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="One">Hund</string>
+    <string name="Two">Katt</string>
+    <string name="Three">WC</string>
+    <string name="Four">Datamaskin</string>
+    <string name="Five">Soverom</string>
+    <string name="Six">Student</string>
+    <string name="Seven">Bil</string>
+    <string name="Eight">Slott</string>
+    <string name="Nine">Hånd</string>
+    <string name="Ten">Snøbrett</string>
+</resources>
