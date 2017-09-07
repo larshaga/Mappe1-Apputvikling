@@ -1,11 +1,17 @@
 package com.example.larsh.mappe1;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.Locale;
+
+import static com.example.larsh.mappe1.R.layout.activity_hangman;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -29,7 +35,7 @@ public class MainActivity extends AppCompatActivity
             {
 
                 Log.i("Button","Rules");
-                //Intent seeRules = new Intent(this,);
+                //Intent seeRules = new Intent(this,RulesActivity.class);
                 //startActivity(seeRules);
             }
         });
@@ -51,8 +57,11 @@ public class MainActivity extends AppCompatActivity
             public void onClick( View v )
             {
                 Log.i("Button","Change language");
-                //Intent changeLanguage = new Intent(this,);
-                //startActivity(changeLanguage);
+
+
+
+
+
             }
         });
 
@@ -68,8 +77,6 @@ public class MainActivity extends AppCompatActivity
         });
 
     }
-
-
 
 
 
