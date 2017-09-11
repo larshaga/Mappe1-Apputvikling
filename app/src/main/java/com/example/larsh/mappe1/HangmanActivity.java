@@ -1,9 +1,20 @@
 package com.example.larsh.mappe1;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.Xml;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.InputStream;
+
+import static java.security.AccessController.getContext;
 
 public class HangmanActivity extends AppCompatActivity
 {
@@ -42,6 +53,9 @@ public class HangmanActivity extends AppCompatActivity
         final Button btn_b = (Button)findViewById(R.id.btn_b);
         final Button btn_n = (Button)findViewById(R.id.btn_n);
         final Button btn_m = (Button)findViewById(R.id.btn_m);
+        final Button btn_æ = (Button)findViewById(R.id.btn_æ);
+        final Button btn_ø = (Button)findViewById(R.id.btn_ø);
+        final Button btn_å = (Button)findViewById(R.id.btn_å);
 
 
         btn_q.setOnClickListener(new View.OnClickListener()
@@ -53,14 +67,40 @@ public class HangmanActivity extends AppCompatActivity
                     // Check if char is used in the word and do something about it.
 
                     antallforsøk++;
+                    Log.i("antallforsøk", String.valueOf(antallforsøk));
+                    countLettersInWordAndSetToLayout();
                 }
                 else
                 {
+                    antallforsøk++;
+                    Log.i("antallforsøk", " antall forsøk oversteget " + String.valueOf(antallforsøk));
                     return;
                 }
             }
         });
+
     }
+
+    // Import every word from arrays.xml and count the words
+
+    String [] words;
+    //XmlResourceParser xrp = getResources().getXml(R.);
+
+
+    /*
+    boolean isCharInWord()
+    {
+        if ()
+        {
+            return true;
+        }
+
+        return false;
+    }
+    */
+
+
+
 
     boolean checkNumberOfTries ()
     {
@@ -70,5 +110,25 @@ public class HangmanActivity extends AppCompatActivity
         }
         return false;
     }
+
+
+
+    void countLettersInWordAndSetToLayout(String word)
+    {
+        int numberOfLettersInWord = 0;
+        numberOfLettersInWord = word.length();
+        Log.i("Word","Number of letters in Word: " + numberOfLettersInWord);
+
+        for (int i = 0; i < numberOfLettersInWord; i++)
+        {
+            // Make lines as many as the numbers of letters in the selected word
+
+
+        }
+    }
+
+
+
+
 
 }

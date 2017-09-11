@@ -8,10 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import java.util.Locale;
 
-import static com.example.larsh.mappe1.R.layout.activity_hangman;
+import static com.example.larsh.mappe1.R.id.btn_seeStatistic;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -23,20 +22,20 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button btn_seeRules = (Button) findViewById(R.id.btn_seeRules);
+        final Button btn_Rules = (Button) findViewById(R.id.btn_seeRules);
         final Button btn_startGame = (Button) findViewById(R.id.btn_startGame);
-        final Button btn_changeLanguage = (Button) findViewById(R.id.btn_changeLanguage);
-        final Button btn_seeStatistic = (Button) findViewById(R.id.btn_seeStatistic);
+        final Button btn_Language = (Button) findViewById(R.id.btn_changeLanguage);
+        final Button btn_Statistic = (Button)findViewById(btn_seeStatistic);
 
-        btn_seeRules.setOnClickListener(new View.OnClickListener()
+        btn_Rules.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick( View v )
             {
 
                 Log.i("Button","Rules");
-                //Intent seeRules = new Intent(this,RulesActivity.class);
-                //startActivity(seeRules);
+                Intent seeRules = new Intent(MainActivity.this,RulesActivity.class);
+                startActivity(seeRules);
             }
         });
 
@@ -46,12 +45,12 @@ public class MainActivity extends AppCompatActivity
             public void onClick( View v )
             {
                 Log.i("Button","Start game");
-                //Intent startGame = new Intent(this, HangmanActivity.class);
-                //startActivity(startGame);
+                Intent startGame = new Intent(MainActivity.this, HangmanActivity.class);
+                startActivity(startGame);
             }
         });
 
-        btn_changeLanguage.setOnClickListener(new View.OnClickListener()
+        btn_Language.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick( View v )
@@ -65,19 +64,18 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        btn_seeStatistic.setOnClickListener(new View.OnClickListener()
+        btn_Statistic.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick( View v )
             {
                 Log.i("Button","see statistic");
-                //Intent seeStatistic = new Intent(this,);
-                //startActivity(seeStatistic);
+                Intent seeStatistic = new Intent(MainActivity.this,StatisticActivity.class);
+                startActivity(seeStatistic);
             }
         });
 
+
     }
-
-
 
 }
