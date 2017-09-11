@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="One">Hund</string>
-    <string name="Two">Katt</string>
-    <string name="Three">WC</string>
-    <string name="Four">Datamaskin</string>
-    <string name="Five">Soverom</string>
-    <string name="Six">Student</string>
-    <string name="Seven">Bil</string>
-    <string name="Eight">Slott</string>
-    <string name="Nine">Hånd</string>
-    <string name="Ten">Snøbrett</string>
+<string-array name="words">
+    <item>Hund</item>
+    <item>Katt</item>
+    <item>WC</item>
+    <item>Datamaskin</item>
+    <item>Soverom</item>
+    <item>Student</item>
+    <item>Bil</item>
+    <item>Slott</item>
+    <item>Hånd</item>
+    <item>Snøbrett</item>
+</string-array>
 </resources>

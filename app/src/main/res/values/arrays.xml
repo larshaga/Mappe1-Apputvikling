@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="One">Dog</string>
-    <string name="Two">Cat</string>
-    <string name="Three">WC</string>
-    <string name="Four">Computer</string>
-    <string name="Five">Bedroom</string>
-    <string name="Six">Student</string>
-    <string name="Seven">Car</string>
-    <string name="Eight">Castle</string>
-    <string name="Nine">Hand</string>
-    <string name="Ten">Snowboard</string>
+    <string-array name="words">
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>WC</item>
+        <item>Computer</item>
+        <item>Bedroom</item>
+        <item>Student</item>
+        <item>Car</item>
+        <item>Castle</item>
+        <item>Hand</item>
+        <item>Snowboard</item>
+    </string-array>
 </resources>
