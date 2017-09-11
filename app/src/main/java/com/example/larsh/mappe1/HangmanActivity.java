@@ -64,7 +64,11 @@ public class HangmanActivity extends AppCompatActivity
         final Button btn_ø = (Button) findViewById(R.id.btn_ø);
         final Button btn_å = (Button) findViewById(R.id.btn_å);
 
-        String[] wordsFromFile = getResources().getStringArray(R.array.words);
+
+        String selectedWord = selectRandomeWordUsingRandomNumber(generateRandomeNumber());
+        countLettersInWordAndSetToLayout(selectedWord);
+
+        Log.i("Word", "Selected word: " + selectedWord);
 
         btn_q.setOnClickListener(new View.OnClickListener()
         {
@@ -77,14 +81,12 @@ public class HangmanActivity extends AppCompatActivity
                     // Check if char is used in the word and do something about it.
 
                     antallforsøk++;
-                    generateRandomeNumber();
                     Log.i("antallforsøk", String.valueOf(antallforsøk));
 
                 }
                 else
                 {
                     antallforsøk++;
-                    generateRandomeNumber();
                     Log.i("antallforsøk", " antall forsøk oversteget " + String.valueOf(antallforsøk));
                     return;
                 }
@@ -118,30 +120,34 @@ public class HangmanActivity extends AppCompatActivity
     }
 
 
-
-    void generateRandomeNumber()
+    int generateRandomeNumber( )
     {
-        int randometest = (int)(Math.random() * ((9 - 0) +1 ));
 
-        Random testing = new Random();
-        int testingnum = (0 + testing.nextInt(9-0)+1);
-        Log.i("Randome", "first " + String.valueOf(randometest));
-        Log.i("Randome", "Secound " + String.valueOf(testingnum));
+        Random generatedRandomeNumber = new Random();
+        // Generates a randome number between 0 and 9 (total 10 different numbers)
+        int randomNumber = generatedRandomeNumber.nextInt((9 - 0) + 1);
 
+        return randomNumber;
+    }
+
+    String selectRandomeWordUsingRandomNumber( int randomeNumber )
+    {
+
+        String[] wordsFromFile = getResources().getStringArray(R.array.words);
+        String selectedRandomeWord = wordsFromFile[randomeNumber];
+
+        return selectedRandomeWord;
     }
 
 
-
-    void countLettersInWordAndSetToLayout( String word )
+    void countLettersInWordAndSetToLayout( String selectedWord )
     {
 
         int numberOfLettersInWord = 0;
-        numberOfLettersInWord = word.length();
-        Log.i("Word", "Number of letters in Word: " + numberOfLettersInWord);
+        numberOfLettersInWord = selectedWord.length();
 
-
+        // Gets the layout so i can make lines as many letters is it is in the word
         Layout = (LinearLayout) findViewById(R.id.NumberOfLettersLayout);
-
 
         for (int i = 0; i < numberOfLettersInWord; i++)
         {
@@ -150,7 +156,7 @@ public class HangmanActivity extends AppCompatActivity
             createdButton.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             createdButton.setText("Test");
             Layout.addView(createdButton);
-            Log.i("Word","Making button");
+            Log.i("Word", "Making button");
 
         }
     }
