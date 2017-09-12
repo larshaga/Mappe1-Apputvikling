@@ -24,7 +24,7 @@ import static java.security.AccessController.getContext;
 public class HangmanActivity extends AppCompatActivity
 {
 
-    byte antallforsøk;
+    byte antallFeiledeForsøk;
     private LinearLayout Layout;
     String selectedWord;
 
@@ -81,15 +81,11 @@ public class HangmanActivity extends AppCompatActivity
                 {
                     // Check if char is used in the word and do something about it.
 
-                    antallforsøk++;
                     isCharInWord("c");
-                    Log.i("antallforsøk", String.valueOf(antallforsøk));
 
                 }
                 else
                 {
-                    antallforsøk++;
-                    Log.i("antallforsøk", " antall forsøk oversteget " + String.valueOf(antallforsøk));
                     return;
                 }
             }
@@ -98,25 +94,30 @@ public class HangmanActivity extends AppCompatActivity
     }
 
 
+
     boolean isCharInWord( String guessedCharacter )
     {
+        if (selectedWord.toLowerCase().contains(guessedCharacter))
+        {
+            Log.i("Char" ,"True!");
 
-        String charactr = "e";
 
-
-        Log.i("Char", selectedWord.toLowerCase());
-        Log.i("Char", String.valueOf(charactr));
-        Log.i("Char1", String.valueOf(selectedWord.toLowerCase().contains(charactr)));
-        Log.i("Char2", String.valueOf(selectedWord.toLowerCase().contains(guessedCharacter)));
-
-        return false;
+            return true;
+        }
+        else
+        {
+            Log.i("Char","False!");
+            antallFeiledeForsøk++;
+            //add another hangman figure
+            return false;
+        }
     }
 
 
     boolean checkNumberOfTries( )
     {
 
-        if (antallforsøk < 6)
+        if (antallFeiledeForsøk < 6)
         {
             return true;
         }
