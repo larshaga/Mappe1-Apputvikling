@@ -26,6 +26,7 @@ public class HangmanActivity extends AppCompatActivity
 
     byte antallforsøk;
     private LinearLayout Layout;
+    String selectedWord;
 
     @Override
     protected void onCreate( Bundle savedInstanceState )
@@ -65,7 +66,7 @@ public class HangmanActivity extends AppCompatActivity
         final Button btn_å = (Button) findViewById(R.id.btn_å);
 
 
-        String selectedWord = selectRandomeWordUsingRandomNumber(generateRandomeNumber());
+        selectedWord = selectRandomeWordUsingRandomNumber(generateRandomeNumber());
         countLettersInWordAndSetToLayout(selectedWord);
 
         Log.i("Word", "Selected word: " + selectedWord);
@@ -81,6 +82,7 @@ public class HangmanActivity extends AppCompatActivity
                     // Check if char is used in the word and do something about it.
 
                     antallforsøk++;
+                    isCharInWord("c");
                     Log.i("antallforsøk", String.valueOf(antallforsøk));
 
                 }
@@ -95,19 +97,21 @@ public class HangmanActivity extends AppCompatActivity
 
     }
 
-    // Import every word from arrays.xml and count the words
 
-    /*
-    boolean isCharInWord()
+    boolean isCharInWord( String guessedCharacter )
     {
-        if ()
-        {
-            return true;
-        }
+
+        String charactr = "e";
+
+
+        Log.i("Char", selectedWord.toLowerCase());
+        Log.i("Char", String.valueOf(charactr));
+        Log.i("Char1", String.valueOf(selectedWord.toLowerCase().contains(charactr)));
+        Log.i("Char2", String.valueOf(selectedWord.toLowerCase().contains(guessedCharacter)));
 
         return false;
     }
-    */
+
 
     boolean checkNumberOfTries( )
     {
@@ -156,7 +160,6 @@ public class HangmanActivity extends AppCompatActivity
             createdButton.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             createdButton.setText("Test");
             Layout.addView(createdButton);
-            Log.i("Word", "Making button");
 
         }
     }
