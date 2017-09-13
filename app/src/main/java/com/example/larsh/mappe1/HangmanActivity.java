@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.Random;
 
 import static java.security.AccessController.getContext;
@@ -82,6 +83,8 @@ public class HangmanActivity extends AppCompatActivity
                     // Check if char is used in the word and do something about it.
 
                     isCharInWord("c");
+                    Log.i("Locale",Locale.getDefault().getLanguage());
+
 
                 }
                 else
@@ -90,6 +93,100 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Checks if the locale is norwegian 'nb', if not returns.
+        if (Locale.getDefault().getLanguage().contains("nb"))
+        {
+
+            btn_æ.setOnClickListener(new View.OnClickListener()
+            {
+
+                public void onClick( View v )
+                {
+
+                    if (checkNumberOfTries())
+                    {
+                        // Check if char is used in the word and do something about it.
+
+                        Log.i("Button","æ is pressed");
+
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            });
+
+            btn_ø.setOnClickListener(new View.OnClickListener()
+            {
+
+                public void onClick( View v )
+                {
+
+                    if (checkNumberOfTries())
+                    {
+                        // Check if char is used in the word and do something about it.
+
+                        Log.i("Button","ø is pressed");
+
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            });
+
+            btn_å.setOnClickListener(new View.OnClickListener()
+            {
+
+                public void onClick( View v )
+                {
+
+                    if (checkNumberOfTries())
+                    {
+                        // Check if char is used in the word and do something about it.
+
+                        Log.i("Button","Å is pressed");
+
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            });
+        }
+        else
+        {
+            // Not set to norwegian 'nb' language, disabling æøå setOnClickListener
+            return;
+        }
+
 
     }
 
