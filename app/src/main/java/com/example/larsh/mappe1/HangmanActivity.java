@@ -88,7 +88,6 @@ public class HangmanActivity extends AppCompatActivity
 
                     isCharInWord("c");
                     Log.i("Locale", Locale.getDefault().getLanguage());
-                    1.setText
 
                 }
                 else
