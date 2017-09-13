@@ -22,11 +22,12 @@
         android:id="@+id/NumberOfLettersLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/LettersLayout"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="true"
         android:layout_alignWithParentIfMissing="false"
-        android:layout_above="@id/LettersLayout"
         android:layout_weight="1"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView

@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.graphics.Paint;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.InputStream;
 import java.util.Locale;
@@ -83,8 +87,8 @@ public class HangmanActivity extends AppCompatActivity
                     // Check if char is used in the word and do something about it.
 
                     isCharInWord("c");
-                    Log.i("Locale",Locale.getDefault().getLanguage());
-
+                    Log.i("Locale", Locale.getDefault().getLanguage());
+                    1.setText
 
                 }
                 else
@@ -93,28 +97,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         // Checks if the locale is norwegian 'nb', if not returns.
@@ -131,7 +113,7 @@ public class HangmanActivity extends AppCompatActivity
                     {
                         // Check if char is used in the word and do something about it.
 
-                        Log.i("Button","æ is pressed");
+                        Log.i("Button", "æ is pressed");
 
                     }
                     else
@@ -151,7 +133,7 @@ public class HangmanActivity extends AppCompatActivity
                     {
                         // Check if char is used in the word and do something about it.
 
-                        Log.i("Button","ø is pressed");
+                        Log.i("Button", "ø is pressed");
 
                     }
                     else
@@ -171,7 +153,7 @@ public class HangmanActivity extends AppCompatActivity
                     {
                         // Check if char is used in the word and do something about it.
 
-                        Log.i("Button","Å is pressed");
+                        Log.i("Button", "Å is pressed");
 
                     }
                     else
@@ -191,19 +173,19 @@ public class HangmanActivity extends AppCompatActivity
     }
 
 
-
     boolean isCharInWord( String guessedCharacter )
     {
+
         if (selectedWord.toLowerCase().contains(guessedCharacter))
         {
-            Log.i("Char" ,"True!");
+            Log.i("Char", "True!");
 
 
             return true;
         }
         else
         {
-            Log.i("Char","False!");
+            Log.i("Char", "False!");
             antallFeiledeForsøk++;
             //add another hangman figure
             return false;
@@ -254,10 +236,16 @@ public class HangmanActivity extends AppCompatActivity
         for (int i = 0; i < numberOfLettersInWord; i++)
         {
             // Make lines as many as the numbers of letters in the selected word
-            Button createdButton = new Button(this);
-            createdButton.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            createdButton.setText("Test");
-            Layout.addView(createdButton);
+
+            TextView createdTextView = new TextView(this);
+            createdTextView.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            createdTextView.setId(i);
+            createdTextView.setText("   ");
+            createdTextView.setPadding(30,30,30,30);
+            createdTextView.setPaintFlags(createdTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            createdTextView.setTextSize(40);
+            Layout.addView(createdTextView);
+
 
         }
     }
