@@ -5,4 +5,7 @@
     <string name="start_game">Start game</string>
     <string name="statistics">Statistics</string>
     <string name="explainrules">Rules: The player tries to guess a word and has limited guesses (6).</string>
+    <string name="you_are_dead">You are dead!</string>
+    <string name="wanna_play_more">Do you want to play more?</string>
+
 </resources>
