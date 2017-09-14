@@ -16,19 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".HangmanActivity"
             android:parentActivityName=".MainActivity">
         </activity>
-
         <activity
             android:name=".RulesActivity"
             android:parentActivityName=".MainActivity">
         </activity>
-
-        <activity android:name=".StatisticActivity"
+        <activity
+            android:name=".StatisticActivity"
             android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+            android:name=".DeadActivity"
+            android:parentActivityName=".HangmanActivity">
         </activity>
     </application>
 
