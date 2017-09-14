@@ -1,35 +1,25 @@
 package com.example.larsh.mappe1;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Xml;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.io.InputStream;
 import java.util.Locale;
 import java.util.Random;
-
-import static java.security.AccessController.getContext;
 
 public class HangmanActivity extends AppCompatActivity
 {
 
-    byte antallFeiledeForsøk;
+    byte numberOfWrongtries;
     private LinearLayout Layout;
     String selectedWord;
 
@@ -84,11 +74,32 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    // Check if char is used in the word and do something about it.
+                    isCharInWord("q");
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
 
-                    isCharInWord("c");
-                    Log.i("Locale", Locale.getDefault().getLanguage());
+        btn_c.setOnClickListener(new View.OnClickListener()
+        {
 
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("c"))
+                    {
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_å.setEnabled(false);
+                    }
                 }
                 else
                 {
@@ -150,10 +161,14 @@ public class HangmanActivity extends AppCompatActivity
 
                     if (checkNumberOfTries())
                     {
-                        // Check if char is used in the word and do something about it.
-
-                        Log.i("Button", "Å is pressed");
-
+                        if (isCharInWord("å"))
+                        {
+                            Log.i("Button", "You guessed a right character");
+                        }
+                        else
+                        {
+                            btn_å.setEnabled(false);
+                        }
                     }
                     else
                     {
@@ -185,7 +200,7 @@ public class HangmanActivity extends AppCompatActivity
         else
         {
             Log.i("Char", "False!");
-            antallFeiledeForsøk++;
+            numberOfWrongtries++;
             //add another hangman figure
             return false;
         }
@@ -195,10 +210,12 @@ public class HangmanActivity extends AppCompatActivity
     boolean checkNumberOfTries( )
     {
 
-        if (antallFeiledeForsøk < 6)
+        if (numberOfWrongtries < 6)
         {
             return true;
         }
+        Intent youAreDead = new Intent(HangmanActivity.this, DeadActivity.class);
+        startActivity(youAreDead);
         return false;
     }
 
@@ -240,7 +257,7 @@ public class HangmanActivity extends AppCompatActivity
             createdTextView.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             createdTextView.setId(i);
             createdTextView.setText("   ");
-            createdTextView.setPadding(30,30,30,30);
+            createdTextView.setPadding(30, 30, 30, 30);
             createdTextView.setPaintFlags(createdTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             createdTextView.setTextSize(40);
             Layout.addView(createdTextView);
