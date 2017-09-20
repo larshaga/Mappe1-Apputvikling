@@ -264,7 +264,7 @@ public class HangmanActivity extends AppCompatActivity
 
         // Gets the layout so i can make lines as many letters is it is in the word
         Layout = (LinearLayout) findViewById(R.id.NumberOfLettersLayout);
-        TextView test = (TextView) findViewById(R.id.1);
+        //TextView test = (TextView) findViewById(R.id.1);
         for (int i = 0; i < numberOfLettersInWord; i++)
         {
             // Make lines as many as the numbers of letters in the selected word
