@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.Locale;
 import java.util.Random;
 
@@ -61,11 +63,13 @@ public class HangmanActivity extends AppCompatActivity
         final Button btn_å = (Button) findViewById(R.id.btn_å);
 
 
-        selectedWord = selectRandomeWordUsingRandomNumber(generateRandomeNumber());
+        selectedWord = selectRandomWordUsingRandomNumber(generateRandomeNumber());
         countLettersInWordAndSetToLayout(selectedWord);
 
         Log.i("Word", "Selected word: " + selectedWord);
 
+
+        // Buttons
         btn_q.setOnClickListener(new View.OnClickListener()
         {
 
@@ -74,7 +78,15 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    isCharInWord("q");
+                    if (isCharInWord("q"))
+                    {
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_q.setEnabled(false);
+                    }
                 }
                 else
                 {
@@ -83,7 +95,7 @@ public class HangmanActivity extends AppCompatActivity
             }
         });
 
-        btn_c.setOnClickListener(new View.OnClickListener()
+        btn_e.setOnClickListener(new View.OnClickListener()
         {
 
             public void onClick( View v )
@@ -91,14 +103,14 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("c"))
+                    if (isCharInWord("e"))
                     {
 
                         Log.i("Button", "You guessed a right character");
                     }
                     else
                     {
-                        btn_å.setEnabled(false);
+                        btn_e.setEnabled(false);
                     }
                 }
                 else
@@ -183,7 +195,6 @@ public class HangmanActivity extends AppCompatActivity
             return;
         }
 
-
     }
 
 
@@ -214,7 +225,9 @@ public class HangmanActivity extends AppCompatActivity
         {
             return true;
         }
-        Intent youAreDead = new Intent(HangmanActivity.this, DeadActivity.class);
+
+        Intent youAreDead = new Intent(this, DeadActivity.class);
+        youAreDead.putExtra("selectedWord", selectedWord);
         startActivity(youAreDead);
         return false;
     }
@@ -230,41 +243,70 @@ public class HangmanActivity extends AppCompatActivity
         return randomNumber;
     }
 
-    String selectRandomeWordUsingRandomNumber( int randomeNumber )
+    String selectRandomWordUsingRandomNumber( int randomeNumber )
     {
 
         String[] wordsFromFile = getResources().getStringArray(R.array.words);
-        String selectedRandomeWord = wordsFromFile[randomeNumber];
+        String selectedRandomWord = wordsFromFile[randomeNumber];
+        char[] testing = selectedRandomWord.toCharArray();
+        Log.i("testing", String.valueOf(testing[0]));
 
-        return selectedRandomeWord;
+
+        return selectedRandomWord;
     }
 
 
-    void countLettersInWordAndSetToLayout( String selectedWord )
+    void countLettersInWordAndSetToLayout( String selectedRandomWord )
     {
 
         int numberOfLettersInWord = 0;
-        numberOfLettersInWord = selectedWord.length();
+        numberOfLettersInWord = selectedRandomWord.length();
 
         // Gets the layout so i can make lines as many letters is it is in the word
         Layout = (LinearLayout) findViewById(R.id.NumberOfLettersLayout);
-
+        TextView test = (TextView) findViewById(R.id.1);
         for (int i = 0; i < numberOfLettersInWord; i++)
         {
             // Make lines as many as the numbers of letters in the selected word
 
             TextView createdTextView = new TextView(this);
             createdTextView.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
             createdTextView.setId(i);
+            Log.i("LayoutID", String.valueOf(createdTextView.getId()));
+
+            //createdTextView.findViewById(i);
+
             createdTextView.setText("   ");
             createdTextView.setPadding(30, 30, 30, 30);
             createdTextView.setPaintFlags(createdTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             createdTextView.setTextSize(40);
             Layout.addView(createdTextView);
-
-
         }
+
     }
 
+    @Override
+    protected void onSaveInstanceState( Bundle outState )
+    {
+
+        super.onSaveInstanceState(outState);
+
+    }
+
+    protected void onRestoreInstanceState( Bundle savedInstanceState )
+    {
+
+        super.onRestoreInstanceState(savedInstanceState);
+
+    }
+
+
+    protected void onPause( )
+    {
+
+        super.onPause();
+
+    }
 
 }
