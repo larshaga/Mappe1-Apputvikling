@@ -2,7 +2,9 @@ package com.example.larsh.mappe1;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -27,8 +29,8 @@ public class HangmanActivity extends AppCompatActivity
     byte numberOfWrongtries = 0;
     private LinearLayout Layout;
     String selectedWord;
-    int numberOfCorrectChars;
-
+    int numberOfCorrectChars = 0;
+    int countHowManyTimesYouHaveWon;
     TextView[] textViewArray;
 
 
@@ -36,7 +38,7 @@ public class HangmanActivity extends AppCompatActivity
     protected void onCreate( Bundle savedInstanceState )
     {
 
-
+        Log.i("timesWon", String.valueOf(countHowManyTimesYouHaveWon));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
 
@@ -564,6 +566,9 @@ public class HangmanActivity extends AppCompatActivity
         youWonAlertDialog.show();
 
         disableLetters.setVisibility(View.INVISIBLE);
+
+        countHowManyTimesYouHaveWon++;
+        Log.i("countHowManyTimesWon", String.valueOf(countHowManyTimesYouHaveWon));
     }
 
 
@@ -633,19 +638,26 @@ public class HangmanActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    protected void onSaveInstanceState( Bundle outState )
+    protected void onPause()
     {
+        super.onPause();
 
-        super.onSaveInstanceState(outState);
+        getSharedPreferences("PREFERENCE",MODE_APPEND)
+                .edit()
+                .putInt("HOWMANYTIMESYOUHAVEWON",countHowManyTimesYouHaveWon)
+                .apply();
+
+        /*SharedPreferences saveTest = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = saveTest.edit();
+        editor.putInt("HOWMANYTIMESYOUHAVEWON",countHowManyTimesYouHaveWon);
+        editor.apply();*/
+
+        Log.i("HangmanWon", String.valueOf(countHowManyTimesYouHaveWon));
 
     }
 
-    protected void onRestoreInstanceState( Bundle savedInstanceState )
-    {
 
-        super.onRestoreInstanceState(savedInstanceState);
 
-    }
+
 
 }

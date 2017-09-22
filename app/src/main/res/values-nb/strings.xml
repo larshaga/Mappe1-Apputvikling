@@ -10,5 +10,7 @@
     <string name="wanna_play_more">Vil du spille en gang til?</string>
     <string name="you_won">You won!</string>
     <string name="you_won_message">Congratulations, you managed to guess the word. Do you want to play again?</string>
+    <string name="how_many_times_you_have_won">How many times you have won:</string>
+    <string name="how_many_times_you_have_lost">How many times you have lost</string>
 
 </resources>
