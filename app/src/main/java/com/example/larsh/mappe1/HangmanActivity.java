@@ -594,14 +594,21 @@ public class HangmanActivity extends AppCompatActivity
         {
             Log.i("Char", "True!");
             // Set the char in the correct place
-            if (selectedWord.toLowerCase().lastIndexOf(guessedCharacter) != selectedWord.toLowerCase().indexOf(guessedCharacter))
+            if (selectedWord.toLowerCase().lastIndexOf(guessedCharacter) == selectedWord.toLowerCase().indexOf(guessedCharacter))
             {
-                Log.i("Char","there is more than one letter in the word that matches");
+
+                textViewArray[selectedWord.toLowerCase().indexOf(guessedCharacter)].setText(guessedCharacter);
+
+            }
+            else
+            {
+
+                Log.i("Char", "there is more than one letter in the word that matches");
+                textViewArray[selectedWord.toLowerCase().indexOf(guessedCharacter)].setText(guessedCharacter);
+                textViewArray[selectedWord.toLowerCase().lastIndexOf(guessedCharacter)].setText(guessedCharacter);
+
             }
 
-            Log.i("textViewArray", String.valueOf(selectedWord.indexOf(guessedCharacter)));
-            Log.i("LENGDE PÅ SELECTED WORD", String.valueOf(selectedWord.indexOf(guessedCharacter)));
-            textViewArray[selectedWord.toLowerCase().indexOf(guessedCharacter)].setText(guessedCharacter);
 
             numberOfRightGuesses++;
             return true;
@@ -623,7 +630,9 @@ public class HangmanActivity extends AppCompatActivity
         {
             if (numberOfRightGuesses == selectedWord.length())
             {
-                Toast.makeText(this, "Congratz", Toast.LENGTH_LONG);
+                Toast.makeText(this, "Congratz", Toast.LENGTH_LONG).show();
+
+
             }
 
             return true;
@@ -649,7 +658,7 @@ public class HangmanActivity extends AppCompatActivity
     {
 
         String[] wordsFromFile = getResources().getStringArray(R.array.words);
-        String selectedRandomWord = wordsFromFile[randomNumber];;
+        String selectedRandomWord = wordsFromFile[randomNumber]; ;
 
         return selectedRandomWord;
     }
