@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import java.util.Locale;
 
 import static com.example.larsh.mappe1.R.id.btn_seeStatistic;
@@ -25,26 +26,27 @@ public class MainActivity extends AppCompatActivity
         final Button btn_Rules = (Button) findViewById(R.id.btn_seeRules);
         final Button btn_startGame = (Button) findViewById(R.id.btn_startGame);
         final Button btn_Language = (Button) findViewById(R.id.btn_changeLanguage);
-        final Button btn_Statistic = (Button)findViewById(btn_seeStatistic);
+        final Button btn_Statistic = (Button) findViewById(btn_seeStatistic);
 
         btn_Rules.setOnClickListener(new View.OnClickListener()
         {
+
             @Override
             public void onClick( View v )
             {
 
-                Log.i("Button","Rules");
-                Intent seeRules = new Intent(MainActivity.this,RulesActivity.class);
+                Intent seeRules = new Intent(MainActivity.this, RulesActivity.class);
                 startActivity(seeRules);
             }
         });
 
         btn_startGame.setOnClickListener(new View.OnClickListener()
         {
+
             @Override
             public void onClick( View v )
             {
-                Log.i("Button","Start game");
+
                 Intent startGame = new Intent(MainActivity.this, HangmanActivity.class);
                 startActivity(startGame);
             }
@@ -52,25 +54,42 @@ public class MainActivity extends AppCompatActivity
 
         btn_Language.setOnClickListener(new View.OnClickListener()
         {
+
             @Override
             public void onClick( View v )
             {
-                Log.i("Button","Change language");
+                // Checks if the language is set to nb (norwegian), if not it sets it to nb. If it is set to nb, sets it to en. Then recreates the activity for the changes to apply.
+                if (!Locale.getDefault().getLanguage().contains("nb"))
+                {
+                    Locale locale = new Locale("nb");
+                    Locale.setDefault(locale);
+                    Configuration config = getBaseContext().getResources().getConfiguration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
+                    recreate();
+                }
+                else if (!Locale.getDefault().getLanguage().contains("en"))
+                {
+                    Locale locale = new Locale("en");
+                    Locale.setDefault(locale);
+                    Configuration config = getBaseContext().getResources().getConfiguration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
-
-
-
+                    recreate();
+                }
             }
         });
 
         btn_Statistic.setOnClickListener(new View.OnClickListener()
         {
+
             @Override
             public void onClick( View v )
             {
-                Log.i("Button","see statistic");
-                Intent seeStatistic = new Intent(MainActivity.this,StatisticActivity.class);
+
+                Intent seeStatistic = new Intent(MainActivity.this, StatisticActivity.class);
                 startActivity(seeStatistic);
             }
         });
