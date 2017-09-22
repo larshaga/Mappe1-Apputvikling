@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 import java.util.Random;
@@ -18,11 +19,12 @@ import java.util.Random;
 public class HangmanActivity extends AppCompatActivity
 {
 
-    byte numberOfWrongtries;
+    byte numberOfWrongtries = 0;
     private LinearLayout Layout;
     String selectedWord;
     TextView[] textViewArray = new TextView[50];
-    char[] selectedWordCharArray;
+    char[] selectedWordCharArray = new char[100];
+    byte numberOfRightGuesses = 0;
 
     @Override
     protected void onCreate( Bundle savedInstanceState )
@@ -78,17 +80,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("q"))
-                    {
-
-                        Log.i("Button", "You guessed a right character");
-                        btn_q.setEnabled(false);
-
-                    }
-                    else
-                    {
-                        btn_q.setEnabled(false);
-                    }
+                    isCharInWord("q");
+                    btn_q.setEnabled(false);
                 }
                 else
                 {
@@ -105,16 +98,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("w"))
-                    {
-                        btn_w.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_w.setEnabled(false);
-                    }
+                    isCharInWord("w");
+                    btn_w.setEnabled(false);
                 }
                 else
                 {
@@ -149,16 +134,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("r"))
-                    {
-                        btn_r.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_r.setEnabled(false);
-                    }
+                    isCharInWord("r");
+                    btn_r.setEnabled(false);
                 }
                 else
                 {
@@ -166,7 +143,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_t.setOnClickListener(new View.OnClickListener()
         {
 
@@ -175,16 +151,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("t"))
-                    {
-                        btn_t.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_t.setEnabled(false);
-                    }
+                    isCharInWord("t");
+                    btn_t.setEnabled(false);
                 }
                 else
                 {
@@ -192,7 +160,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_y.setOnClickListener(new View.OnClickListener()
         {
 
@@ -201,16 +168,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("y"))
-                    {
-                        btn_y.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_y.setEnabled(false);
-                    }
+                    isCharInWord("y");
+                    btn_y.setEnabled(false);
                 }
                 else
                 {
@@ -218,7 +177,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_u.setOnClickListener(new View.OnClickListener()
         {
 
@@ -227,16 +185,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("u"))
-                    {
-                        btn_u.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_u.setEnabled(false);
-                    }
+                    isCharInWord("u");
+                    btn_u.setEnabled(false);
                 }
                 else
                 {
@@ -244,7 +194,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_i.setOnClickListener(new View.OnClickListener()
         {
 
@@ -253,16 +202,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("i"))
-                    {
-                        btn_i.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_i.setEnabled(false);
-                    }
+                    isCharInWord("i");
+                    btn_i.setEnabled(false);
                 }
                 else
                 {
@@ -270,7 +211,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_o.setOnClickListener(new View.OnClickListener()
         {
 
@@ -279,16 +219,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("o"))
-                    {
-                        btn_o.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_o.setEnabled(false);
-                    }
+                    isCharInWord("o");
+                    btn_o.setEnabled(false);
                 }
                 else
                 {
@@ -296,7 +228,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_p.setOnClickListener(new View.OnClickListener()
         {
 
@@ -305,16 +236,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("p"))
-                    {
-                        btn_p.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_p.setEnabled(false);
-                    }
+                    isCharInWord("p");
+                    btn_p.setEnabled(false);
                 }
                 else
                 {
@@ -322,7 +245,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_a.setOnClickListener(new View.OnClickListener()
         {
 
@@ -331,17 +253,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("a"))
-                    {
-                        btn_a.setEnabled(false);
-
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_a.setEnabled(false);
-                    }
+                    isCharInWord("a");
+                    btn_a.setEnabled(false);
                 }
                 else
                 {
@@ -349,7 +262,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_s.setOnClickListener(new View.OnClickListener()
         {
 
@@ -358,17 +270,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("s"))
-                    {
-                        btn_s.setEnabled(false);
-
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_s.setEnabled(false);
-                    }
+                    isCharInWord("s");
+                    btn_s.setEnabled(false);
                 }
                 else
                 {
@@ -376,7 +279,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_d.setOnClickListener(new View.OnClickListener()
         {
 
@@ -385,16 +287,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("d"))
-                    {
-                        btn_d.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_d.setEnabled(false);
-                    }
+                    isCharInWord("d");
+                    btn_d.setEnabled(false);
                 }
                 else
                 {
@@ -402,7 +296,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_f.setOnClickListener(new View.OnClickListener()
         {
 
@@ -411,17 +304,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("f"))
-                    {
-                        btn_f.setEnabled(false);
-
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_f.setEnabled(false);
-                    }
+                    isCharInWord("f");
+                    btn_f.setEnabled(false);
                 }
                 else
                 {
@@ -429,7 +313,6 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
-
         btn_g.setOnClickListener(new View.OnClickListener()
         {
 
@@ -438,16 +321,8 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("g"))
-                    {
-                        btn_g.setEnabled(false);
-
-                        Log.i("Button", "You guessed a right character");
-                    }
-                    else
-                    {
-                        btn_g.setEnabled(false);
-                    }
+                    isCharInWord("g");
+                    btn_g.setEnabled(false);
                 }
                 else
                 {
@@ -455,7 +330,193 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
+        btn_h.setOnClickListener(new View.OnClickListener()
+        {
 
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("h");
+                    btn_h.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_j.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("j");
+                    btn_j.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_k.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("k");
+                    btn_k.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_l.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("l");
+                    btn_l.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_z.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("z");
+                    btn_z.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_x.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("x");
+                    btn_x.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_c.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("c");
+                    btn_c.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_v.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("v");
+                    btn_v.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_b.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("b");
+                    btn_b.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_n.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("n");
+                    btn_n.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+        btn_m.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    isCharInWord("m");
+                    btn_m.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
 
 
         // Checks if the locale is norwegian 'nb', if not returns.
@@ -470,10 +531,8 @@ public class HangmanActivity extends AppCompatActivity
 
                     if (checkNumberOfTries())
                     {
-                        // Check if char is used in the word and do something about it.
-
-                        Log.i("Button", "æ is pressed");
-
+                        isCharInWord("æ");
+                        btn_æ.setEnabled(false);
                     }
                     else
                     {
@@ -490,10 +549,8 @@ public class HangmanActivity extends AppCompatActivity
 
                     if (checkNumberOfTries())
                     {
-                        // Check if char is used in the word and do something about it.
-
-                        Log.i("Button", "ø is pressed");
-
+                        isCharInWord("ø");
+                        btn_ø.setEnabled(false);
                     }
                     else
                     {
@@ -510,14 +567,8 @@ public class HangmanActivity extends AppCompatActivity
 
                     if (checkNumberOfTries())
                     {
-                        if (isCharInWord("å"))
-                        {
-                            Log.i("Button", "You guessed a right character");
-                        }
-                        else
-                        {
-                            btn_å.setEnabled(false);
-                        }
+                        isCharInWord("å");
+                        btn_å.setEnabled(false);
                     }
                     else
                     {
@@ -525,6 +576,7 @@ public class HangmanActivity extends AppCompatActivity
                     }
                 }
             });
+
         }
         else
         {
@@ -542,12 +594,16 @@ public class HangmanActivity extends AppCompatActivity
         {
             Log.i("Char", "True!");
             // Set the char in the correct place
+            if (selectedWord.toLowerCase().lastIndexOf(guessedCharacter) != selectedWord.toLowerCase().indexOf(guessedCharacter))
+            {
+                Log.i("Char","there is more than one letter in the word that matches");
+            }
 
-            Log.i("char at place", String.valueOf(selectedWord.indexOf(guessedCharacter)));
-            
-            textViewArray[selectedWord.indexOf(guessedCharacter)].setText(guessedCharacter);
+            Log.i("textViewArray", String.valueOf(selectedWord.indexOf(guessedCharacter)));
+            Log.i("LENGDE PÅ SELECTED WORD", String.valueOf(selectedWord.indexOf(guessedCharacter)));
+            textViewArray[selectedWord.toLowerCase().indexOf(guessedCharacter)].setText(guessedCharacter);
 
-
+            numberOfRightGuesses++;
             return true;
         }
         else
@@ -565,6 +621,11 @@ public class HangmanActivity extends AppCompatActivity
 
         if (numberOfWrongtries < 6)
         {
+            if (numberOfRightGuesses == selectedWord.length())
+            {
+                Toast.makeText(this, "Congratz", Toast.LENGTH_LONG);
+            }
+
             return true;
         }
         Intent youAreDead = new Intent(this, DeadActivity.class);
@@ -578,7 +639,7 @@ public class HangmanActivity extends AppCompatActivity
     {
 
         Random generatedRandomeNumber = new Random();
-        // Generates a randome number between 0 and 9 (total 10 different numbers)
+        // Generates a random number between 0 and 9 (total 10 different numbers)
         int randomNumber = generatedRandomeNumber.nextInt((9 - 0) + 1);
 
         return randomNumber;
@@ -588,43 +649,37 @@ public class HangmanActivity extends AppCompatActivity
     {
 
         String[] wordsFromFile = getResources().getStringArray(R.array.words);
-        String selectedRandomWord = wordsFromFile[randomNumber];
-        selectedWordCharArray = selectedRandomWord.toCharArray();
+        String selectedRandomWord = wordsFromFile[randomNumber];;
 
         return selectedRandomWord;
     }
 
     void countLettersInWordAndSetToLayout( String selectedRandomWord )
     {
-
-        int numberOfLettersInWord = 0;
-        numberOfLettersInWord = selectedRandomWord.length();
-
         // Gets the layout so i can make lines as many letters is it is in the word
         Layout = (LinearLayout) findViewById(R.id.NumberOfLettersLayout);
 
-        for (int i = 0; i < numberOfLettersInWord; i++)
+        for (int i = 0; i < selectedRandomWord.length(); i++)
         {
             // Make lines as many as the numbers of letters in the selected word
             TextView createdTextView = new TextView(this);
             createdTextView.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
             createdTextView.setId(i);
-            createdTextView.setText("   ");
+            Log.i("createdTextView", String.valueOf(i));
+            createdTextView.setText("  ");
             createdTextView.setPadding(30, 30, 30, 30);
             createdTextView.setPaintFlags(createdTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             createdTextView.setTextSize(40);
+
+
             Layout.addView(createdTextView);
 
             textViewArray[i] = (TextView) findViewById(i);
+
+            Log.i("textViewArray", String.valueOf(textViewArray[i]).toString());
+
         }
-
-    }
-
-
-    void testing( )
-    {
-
-        textViewArray[1].setText("a");
     }
 
     @Override
