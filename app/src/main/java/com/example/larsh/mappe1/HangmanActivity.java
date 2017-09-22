@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.Locale;
 import java.util.Random;
@@ -24,10 +21,13 @@ public class HangmanActivity extends AppCompatActivity
     byte numberOfWrongtries;
     private LinearLayout Layout;
     String selectedWord;
+    TextView[] textViewArray = new TextView[50];
+    char[] selectedWordCharArray;
 
     @Override
     protected void onCreate( Bundle savedInstanceState )
     {
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
@@ -63,7 +63,7 @@ public class HangmanActivity extends AppCompatActivity
         final Button btn_å = (Button) findViewById(R.id.btn_å);
 
 
-        selectedWord = selectRandomWordUsingRandomNumber(generateRandomeNumber());
+        selectedWord = selectRandomWordUsingRandomNumber(generateRandomNumber());
         countLettersInWordAndSetToLayout(selectedWord);
 
         Log.i("Word", "Selected word: " + selectedWord);
@@ -82,10 +82,38 @@ public class HangmanActivity extends AppCompatActivity
                     {
 
                         Log.i("Button", "You guessed a right character");
+                        btn_q.setEnabled(false);
+
                     }
                     else
                     {
                         btn_q.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_w.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("w"))
+                    {
+                        btn_w.setEnabled(false);
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_w.setEnabled(false);
                     }
                 }
                 else
@@ -103,14 +131,33 @@ public class HangmanActivity extends AppCompatActivity
 
                 if (checkNumberOfTries())
                 {
-                    if (isCharInWord("e"))
+                    isCharInWord("e");
+                    btn_e.setEnabled(false);
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_r.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("r"))
                     {
+                        btn_r.setEnabled(false);
 
                         Log.i("Button", "You guessed a right character");
                     }
                     else
                     {
-                        btn_e.setEnabled(false);
+                        btn_r.setEnabled(false);
                     }
                 }
                 else
@@ -119,6 +166,296 @@ public class HangmanActivity extends AppCompatActivity
                 }
             }
         });
+
+        btn_t.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("t"))
+                    {
+                        btn_t.setEnabled(false);
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_t.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_y.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("y"))
+                    {
+                        btn_y.setEnabled(false);
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_y.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_u.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("u"))
+                    {
+                        btn_u.setEnabled(false);
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_u.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_i.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("i"))
+                    {
+                        btn_i.setEnabled(false);
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_i.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_o.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("o"))
+                    {
+                        btn_o.setEnabled(false);
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_o.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_p.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("p"))
+                    {
+                        btn_p.setEnabled(false);
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_p.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_a.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("a"))
+                    {
+                        btn_a.setEnabled(false);
+
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_a.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_s.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("s"))
+                    {
+                        btn_s.setEnabled(false);
+
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_s.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_d.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("d"))
+                    {
+                        btn_d.setEnabled(false);
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_d.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_f.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("f"))
+                    {
+                        btn_f.setEnabled(false);
+
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_f.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
+        btn_g.setOnClickListener(new View.OnClickListener()
+        {
+
+            public void onClick( View v )
+            {
+
+                if (checkNumberOfTries())
+                {
+                    if (isCharInWord("g"))
+                    {
+                        btn_g.setEnabled(false);
+
+                        Log.i("Button", "You guessed a right character");
+                    }
+                    else
+                    {
+                        btn_g.setEnabled(false);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+        });
+
 
 
         // Checks if the locale is norwegian 'nb', if not returns.
@@ -204,14 +541,19 @@ public class HangmanActivity extends AppCompatActivity
         if (selectedWord.toLowerCase().contains(guessedCharacter))
         {
             Log.i("Char", "True!");
+            // Set the char in the correct place
+
+            Log.i("char at place", String.valueOf(selectedWord.indexOf(guessedCharacter)));
+            
+            textViewArray[selectedWord.indexOf(guessedCharacter)].setText(guessedCharacter);
 
 
             return true;
         }
         else
         {
-            Log.i("Char", "False!");
             numberOfWrongtries++;
+            Log.i("Char", "False! " + "You have tried: " + numberOfWrongtries + " number of times." + "\n" + "You have tries " + (6 - numberOfWrongtries) + "left");
             //add another hangman figure
             return false;
         }
@@ -225,7 +567,6 @@ public class HangmanActivity extends AppCompatActivity
         {
             return true;
         }
-
         Intent youAreDead = new Intent(this, DeadActivity.class);
         youAreDead.putExtra("selectedWord", selectedWord);
         startActivity(youAreDead);
@@ -233,7 +574,7 @@ public class HangmanActivity extends AppCompatActivity
     }
 
 
-    int generateRandomeNumber( )
+    int generateRandomNumber( )
     {
 
         Random generatedRandomeNumber = new Random();
@@ -243,18 +584,15 @@ public class HangmanActivity extends AppCompatActivity
         return randomNumber;
     }
 
-    String selectRandomWordUsingRandomNumber( int randomeNumber )
+    String selectRandomWordUsingRandomNumber( int randomNumber )
     {
 
         String[] wordsFromFile = getResources().getStringArray(R.array.words);
-        String selectedRandomWord = wordsFromFile[randomeNumber];
-        char[] testing = selectedRandomWord.toCharArray();
-        Log.i("testing", String.valueOf(testing[0]));
-
+        String selectedRandomWord = wordsFromFile[randomNumber];
+        selectedWordCharArray = selectedRandomWord.toCharArray();
 
         return selectedRandomWord;
     }
-
 
     void countLettersInWordAndSetToLayout( String selectedRandomWord )
     {
@@ -264,26 +602,29 @@ public class HangmanActivity extends AppCompatActivity
 
         // Gets the layout so i can make lines as many letters is it is in the word
         Layout = (LinearLayout) findViewById(R.id.NumberOfLettersLayout);
-        //TextView test = (TextView) findViewById(R.id.1);
+
         for (int i = 0; i < numberOfLettersInWord; i++)
         {
             // Make lines as many as the numbers of letters in the selected word
-
             TextView createdTextView = new TextView(this);
             createdTextView.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
             createdTextView.setId(i);
-            Log.i("LayoutID", String.valueOf(createdTextView.getId()));
-
-            //createdTextView.findViewById(i);
-
             createdTextView.setText("   ");
             createdTextView.setPadding(30, 30, 30, 30);
             createdTextView.setPaintFlags(createdTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             createdTextView.setTextSize(40);
             Layout.addView(createdTextView);
+
+            textViewArray[i] = (TextView) findViewById(i);
         }
 
+    }
+
+
+    void testing( )
+    {
+
+        textViewArray[1].setText("a");
     }
 
     @Override
@@ -298,14 +639,6 @@ public class HangmanActivity extends AppCompatActivity
     {
 
         super.onRestoreInstanceState(savedInstanceState);
-
-    }
-
-
-    protected void onPause( )
-    {
-
-        super.onPause();
 
     }
 
