@@ -1,8 +1,10 @@
 package com.example.larsh.mappe1;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,15 +18,19 @@ import android.widget.Toast;
 import java.util.Locale;
 import java.util.Random;
 
+import static com.example.larsh.mappe1.R.id.LettersLayout;
+import static com.example.larsh.mappe1.R.id.text;
+
 public class HangmanActivity extends AppCompatActivity
 {
 
     byte numberOfWrongtries = 0;
     private LinearLayout Layout;
     String selectedWord;
-    TextView[] textViewArray = new TextView[50];
-    char[] selectedWordCharArray = new char[100];
-    byte numberOfRightGuesses = 0;
+    int numberOfCorrectChars;
+
+    TextView[] textViewArray;
+
 
     @Override
     protected void onCreate( Bundle savedInstanceState )
@@ -70,7 +76,6 @@ public class HangmanActivity extends AppCompatActivity
 
         Log.i("Word", "Selected word: " + selectedWord);
 
-
         // Buttons
         btn_q.setOnClickListener(new View.OnClickListener()
         {
@@ -82,10 +87,6 @@ public class HangmanActivity extends AppCompatActivity
                 {
                     isCharInWord("q");
                     btn_q.setEnabled(false);
-                }
-                else
-                {
-                    return;
                 }
             }
         });
@@ -101,10 +102,6 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("w");
                     btn_w.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
             }
         });
 
@@ -118,10 +115,6 @@ public class HangmanActivity extends AppCompatActivity
                 {
                     isCharInWord("e");
                     btn_e.setEnabled(false);
-                }
-                else
-                {
-                    return;
                 }
             }
         });
@@ -137,10 +130,6 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("r");
                     btn_r.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
             }
         });
         btn_t.setOnClickListener(new View.OnClickListener()
@@ -153,10 +142,6 @@ public class HangmanActivity extends AppCompatActivity
                 {
                     isCharInWord("t");
                     btn_t.setEnabled(false);
-                }
-                else
-                {
-                    return;
                 }
             }
         });
@@ -171,10 +156,6 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("y");
                     btn_y.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
             }
         });
         btn_u.setOnClickListener(new View.OnClickListener()
@@ -187,10 +168,6 @@ public class HangmanActivity extends AppCompatActivity
                 {
                     isCharInWord("u");
                     btn_u.setEnabled(false);
-                }
-                else
-                {
-                    return;
                 }
             }
         });
@@ -205,10 +182,6 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("i");
                     btn_i.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
             }
         });
         btn_o.setOnClickListener(new View.OnClickListener()
@@ -221,10 +194,6 @@ public class HangmanActivity extends AppCompatActivity
                 {
                     isCharInWord("o");
                     btn_o.setEnabled(false);
-                }
-                else
-                {
-                    return;
                 }
             }
         });
@@ -239,10 +208,6 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("p");
                     btn_p.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
             }
         });
         btn_a.setOnClickListener(new View.OnClickListener()
@@ -255,10 +220,6 @@ public class HangmanActivity extends AppCompatActivity
                 {
                     isCharInWord("a");
                     btn_a.setEnabled(false);
-                }
-                else
-                {
-                    return;
                 }
             }
         });
@@ -273,10 +234,6 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("s");
                     btn_s.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
             }
         });
         btn_d.setOnClickListener(new View.OnClickListener()
@@ -290,10 +247,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("d");
                     btn_d.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_f.setOnClickListener(new View.OnClickListener()
@@ -307,10 +261,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("f");
                     btn_f.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_g.setOnClickListener(new View.OnClickListener()
@@ -324,10 +275,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("g");
                     btn_g.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_h.setOnClickListener(new View.OnClickListener()
@@ -341,10 +289,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("h");
                     btn_h.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_j.setOnClickListener(new View.OnClickListener()
@@ -358,10 +303,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("j");
                     btn_j.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_k.setOnClickListener(new View.OnClickListener()
@@ -375,10 +317,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("k");
                     btn_k.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_l.setOnClickListener(new View.OnClickListener()
@@ -392,10 +331,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("l");
                     btn_l.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_z.setOnClickListener(new View.OnClickListener()
@@ -409,10 +345,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("z");
                     btn_z.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_x.setOnClickListener(new View.OnClickListener()
@@ -426,10 +359,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("x");
                     btn_x.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_c.setOnClickListener(new View.OnClickListener()
@@ -443,10 +373,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("c");
                     btn_c.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_v.setOnClickListener(new View.OnClickListener()
@@ -460,10 +387,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("v");
                     btn_v.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_b.setOnClickListener(new View.OnClickListener()
@@ -477,10 +401,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("b");
                     btn_b.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_n.setOnClickListener(new View.OnClickListener()
@@ -494,10 +415,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("n");
                     btn_n.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
         btn_m.setOnClickListener(new View.OnClickListener()
@@ -511,10 +429,7 @@ public class HangmanActivity extends AppCompatActivity
                     isCharInWord("m");
                     btn_m.setEnabled(false);
                 }
-                else
-                {
-                    return;
-                }
+
             }
         });
 
@@ -534,10 +449,6 @@ public class HangmanActivity extends AppCompatActivity
                         isCharInWord("æ");
                         btn_æ.setEnabled(false);
                     }
-                    else
-                    {
-                        return;
-                    }
                 }
             });
 
@@ -552,10 +463,7 @@ public class HangmanActivity extends AppCompatActivity
                         isCharInWord("ø");
                         btn_ø.setEnabled(false);
                     }
-                    else
-                    {
-                        return;
-                    }
+
                 }
             });
 
@@ -570,18 +478,9 @@ public class HangmanActivity extends AppCompatActivity
                         isCharInWord("å");
                         btn_å.setEnabled(false);
                     }
-                    else
-                    {
-                        return;
-                    }
                 }
             });
 
-        }
-        else
-        {
-            // Not set to norwegian 'nb' language, disabling æøå setOnClickListener
-            return;
         }
 
     }
@@ -598,6 +497,7 @@ public class HangmanActivity extends AppCompatActivity
             {
 
                 textViewArray[selectedWord.toLowerCase().indexOf(guessedCharacter)].setText(guessedCharacter);
+                numberOfCorrectChars++;
 
             }
             else
@@ -606,11 +506,16 @@ public class HangmanActivity extends AppCompatActivity
                 Log.i("Char", "there is more than one letter in the word that matches");
                 textViewArray[selectedWord.toLowerCase().indexOf(guessedCharacter)].setText(guessedCharacter);
                 textViewArray[selectedWord.toLowerCase().lastIndexOf(guessedCharacter)].setText(guessedCharacter);
+                numberOfCorrectChars += 2;
 
             }
 
+            if (numberOfCorrectChars == selectedWord.length())
+            {
+                youWon();
+            }
 
-            numberOfRightGuesses++;
+
             return true;
         }
         else
@@ -618,8 +523,47 @@ public class HangmanActivity extends AppCompatActivity
             numberOfWrongtries++;
             Log.i("Char", "False! " + "You have tried: " + numberOfWrongtries + " number of times." + "\n" + "You have tries " + (6 - numberOfWrongtries) + "left");
             //add another hangman figure
+
             return false;
         }
+
+    }
+
+
+    void youWon( )
+    {
+
+        Log.i("you won", "you won");
+        LinearLayout disableLetters = (LinearLayout) findViewById(R.id.LettersLayout);
+
+        AlertDialog youWonAlertDialog = new AlertDialog.Builder(HangmanActivity.this).create();
+        youWonAlertDialog.setTitle(getString(R.string.you_won));
+        youWonAlertDialog.setMessage(getString(R.string.you_won_message));
+        youWonAlertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No.", new DialogInterface.OnClickListener()
+        {
+
+            public void onClick( DialogInterface dialog, int which )
+            {
+
+                dialog.dismiss();
+                finish();
+            }
+        });
+
+        youWonAlertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes!", new DialogInterface.OnClickListener()
+        {
+
+            public void onClick( DialogInterface dialog, int which )
+            {
+
+                dialog.dismiss();
+                recreate();
+            }
+        });
+
+        youWonAlertDialog.show();
+
+        disableLetters.setVisibility(View.INVISIBLE);
     }
 
 
@@ -628,12 +572,6 @@ public class HangmanActivity extends AppCompatActivity
 
         if (numberOfWrongtries < 6)
         {
-            if (numberOfRightGuesses == selectedWord.length())
-            {
-                Toast.makeText(this, "Congratz", Toast.LENGTH_LONG).show();
-
-
-            }
 
             return true;
         }
@@ -665,6 +603,10 @@ public class HangmanActivity extends AppCompatActivity
 
     void countLettersInWordAndSetToLayout( String selectedRandomWord )
     {
+
+        TextView[] lengthOfLetterArray = new TextView[selectedWord.length()];
+        textViewArray = lengthOfLetterArray;
+
         // Gets the layout so i can make lines as many letters is it is in the word
         Layout = (LinearLayout) findViewById(R.id.NumberOfLettersLayout);
 

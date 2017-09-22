@@ -7,6 +7,8 @@
     <string name="explainrules">Rules: The player tries to guess a word and has limited guesses (6).</string>
     <string name="you_are_dead">You are dead!</string>
     <string name="wanna_play_more">Do you want to play more?</string>
+    <string name="you_won">You won!</string>
+    <string name="you_won_message">Congratulations, you managed to guess the word. Do you want to play again?</string>
 
 
 </resources>
