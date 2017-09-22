@@ -14,6 +14,7 @@ public class DeadActivity extends AppCompatActivity
     @Override
     protected void onCreate( Bundle savedInstanceState )
     {
+        int numberOfDefeats = 0;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dead);
@@ -24,6 +25,12 @@ public class DeadActivity extends AppCompatActivity
         TextView displaySelectedWord = (TextView) findViewById(R.id.selectedWord);
         displaySelectedWord.setText("Selected word was: " + word);
 
+        numberOfDefeats++;
+
+        getSharedPreferences("numberOfDefeats",MODE_PRIVATE)
+                .edit()
+                .putInt("NumberOfDefeat",numberOfDefeats)
+                .apply();
     }
 
 

@@ -8,5 +8,7 @@
     <string name="explainrules">Regler: Spilleren skal prøve å gjette et ord og har begrenset med gjettinger (6).</string>
     <string name="you_are_dead">Du er død!</string>
     <string name="wanna_play_more">Vil du spille en gang til?</string>
+    <string name="number_of_defats">Number of defeats:</string>
+    <string name="number_of_victorys">Number of victories</string>
 
 </resources>
