@@ -9,7 +9,6 @@
     tools:context="com.example.larsh.mappe1.StatisticActivity">
 
     <TextView
-        android:id="@+id/stxt_howmanytimeswon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/how_many_times_you_have_won"/>
@@ -20,7 +19,6 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/stxt_howmanytimeslost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/how_many_times_you_have_lost"/>

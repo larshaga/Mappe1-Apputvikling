@@ -12,5 +12,7 @@
     <string name="you_won_message">Congratulations, you managed to guess the word. Do you want to play again?</string>
     <string name="how_many_times_you_have_won">How many times you have won:</string>
     <string name="how_many_times_you_have_lost">How many times you have lost</string>
+    <string name="press_me_to_play_again">Press me to play again!</string>
+    <string name="selected_word_was">Selected word was:</string>
 
 </resources>

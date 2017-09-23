@@ -34,11 +34,18 @@ public class HangmanActivity extends AppCompatActivity
     TextView[] textViewArray;
 
 
+
+
     @Override
     protected void onCreate( Bundle savedInstanceState )
     {
 
-        Log.i("timesWon", String.valueOf(countHowManyTimesYouHaveWon));
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int countHowManyTimesYouHaveWon = preferences.getInt("HOWMANYTIMESYOUHAVEWON",-1);
+
+        Log.i("howManyTimesfromsave", String.valueOf(countHowManyTimesYouHaveWon));
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hangman);
 
@@ -568,7 +575,6 @@ public class HangmanActivity extends AppCompatActivity
         disableLetters.setVisibility(View.INVISIBLE);
 
         countHowManyTimesYouHaveWon++;
-        Log.i("countHowManyTimesWon", String.valueOf(countHowManyTimesYouHaveWon));
     }
 
 
@@ -622,7 +628,6 @@ public class HangmanActivity extends AppCompatActivity
             createdTextView.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
             createdTextView.setId(i);
-            Log.i("createdTextView", String.valueOf(i));
             createdTextView.setText("  ");
             createdTextView.setPadding(30, 30, 30, 30);
             createdTextView.setPaintFlags(createdTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -633,8 +638,6 @@ public class HangmanActivity extends AppCompatActivity
 
             textViewArray[i] = (TextView) findViewById(i);
 
-            Log.i("textViewArray", String.valueOf(textViewArray[i]).toString());
-
         }
     }
 
@@ -642,17 +645,12 @@ public class HangmanActivity extends AppCompatActivity
     {
         super.onPause();
 
-        getSharedPreferences("PREFERENCE",MODE_APPEND)
+        getSharedPreferences("PREFERENCE",MODE_PRIVATE)
                 .edit()
                 .putInt("HOWMANYTIMESYOUHAVEWON",countHowManyTimesYouHaveWon)
                 .apply();
 
-        /*SharedPreferences saveTest = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = saveTest.edit();
-        editor.putInt("HOWMANYTIMESYOUHAVEWON",countHowManyTimesYouHaveWon);
-        editor.apply();*/
-
-        Log.i("HangmanWon", String.valueOf(countHowManyTimesYouHaveWon));
+        Log.i("HangmanWonSaved", String.valueOf(countHowManyTimesYouHaveWon));
 
     }
 
