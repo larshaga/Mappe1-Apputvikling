@@ -4,15 +4,18 @@
     <string name="rules">Rules</string>
     <string name="start_game">Start game</string>
     <string name="statistics">Statistics</string>
-    <string name="explainrules">Rules: The player tries to guess a word and has limited guesses (6).</string>
-    <string name="you_are_dead">You are dead!</string>
+    <string name="explainrules">Rules: The player tries to guess a word and has a limited of guesses, if the player dosent mangage to guess the word within the amount of guesses, the player wil be hanged. Press the back button in the top left corner to go back to the main menu.</string>
+    <string name="you_are_dead">You got hanged!</string>
     <string name="wanna_play_more">Do you want to play more? Push the button below</string>
     <string name="you_won">You won!</string>
     <string name="you_won_message">Congratulations, you managed to guess the word. Do you want to play again?</string>
     <string name="how_many_times_you_have_won">How many times you have won:</string>
-    <string name="how_many_times_you_have_lost">How many times you have lost</string>
+    <string name="how_many_times_you_have_lost">How many times you have lost:</string>
     <string name="press_me_to_play_again">Press me to play again!</string>
     <string name="selected_word_was">Selected word was:</string>
+    <string name="language_to_nor">Language changed to Norwegian</string>
+    <string name="language_to_eng">Language changed to English</string>
+    <string name="hanging_man">A hanging man</string>
 
 
 </resources>

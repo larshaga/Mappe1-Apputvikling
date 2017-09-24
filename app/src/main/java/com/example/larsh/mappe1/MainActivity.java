@@ -6,8 +6,10 @@ import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -67,7 +69,14 @@ public class MainActivity extends AppCompatActivity
                     config.locale = locale;
                     getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
+
+                    Toast langToNor = Toast.makeText(MainActivity.this, R.string.language_to_nor, Toast.LENGTH_LONG);
+                    langToNor.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL,0,0);
+                    langToNor.show();
+
                     recreate();
+
+
                 }
                 else if (!Locale.getDefault().getLanguage().contains("en"))
                 {
@@ -76,6 +85,10 @@ public class MainActivity extends AppCompatActivity
                     Configuration config = getBaseContext().getResources().getConfiguration();
                     config.locale = locale;
                     getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
+                    Toast langToEng = Toast.makeText(MainActivity.this, R.string.language_to_eng, Toast.LENGTH_LONG);
+                    langToEng.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL,0,0);
+                    langToEng.show();
 
                     recreate();
                 }

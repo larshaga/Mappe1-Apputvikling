@@ -1,28 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="wrap_content"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:background="#f5f5f5"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="30dp"
+              android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.58"
+        app:srcCompat="@mipmap/hangman_icon"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/you_are_dead"/>
+        android:gravity="center"
+        android:text="@string/you_are_dead"
+        android:textColor="#FF0000"
+        android:textSize="45sp"/>
 
     <TextView
         android:id="@+id/selectedWord"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/wanna_play_more"/>
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/wanna_play_more"
+        android:textColor="#000000"/>
 
     <Button
         android:id="@+id/btn_playAgain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="#3F51B5"
+        android:padding="20dp"
         android:text="@string/press_me_to_play_again"/>
 
 </LinearLayout>
