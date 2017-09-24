@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#f5f5f5"
@@ -11,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
@@ -227,42 +227,132 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/LettersLayout"
-        android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal">
 
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/LettersLayout"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="60dp"
-        android:layout_weight="2"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/ic_action_name"/>
+        <ImageView
+            android:id="@+id/hangman_leg_right"
+            android:layout_width="70dp"
+            android:layout_height="65dp"
+            android:cropToPadding="false"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.868"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.894"
+            app:srcCompat="@drawable/hangman_leg_right"/>
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="127dp"
-                android:layout_height="112dp"
-                app:srcCompat="@drawable/hangman_head"/>
+        <ImageView
+            android:id="@+id/hangman_leg_left"
+            android:layout_width="72dp"
+            android:layout_height="66dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.817"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.897"
+            app:srcCompat="@drawable/hangman_leg_left"/>
 
-        </FrameLayout>
+        <ImageView
+            android:id="@+id/hangman_arm_right"
+            android:layout_width="45dp"
+            android:layout_height="43dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.778"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.583"
+            app:srcCompat="@drawable/hangman_arm_right"/>
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/hangman_arm_left"
+            android:layout_width="48dp"
+            android:layout_height="44dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.876"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.584"
+            app:srcCompat="@drawable/hangman_arm_left"/>
+
+        <ImageView
+            android:id="@+id/hangman_body"
+            android:layout_width="175dp"
+            android:layout_height="158dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.729"
+            app:srcCompat="@drawable/hangman_body"/>
+
+        <ImageView
+            android:id="@+id/hangman_gallow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/hangman_gallow"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1"/>
+
+        <ImageView
+            android:id="@+id/hangman_head"
+            android:layout_width="129dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="166dp"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintHorizontal_bias="0.911"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.912"
+            app:srcCompat="@drawable/hangman_head"
+            tools:layout_conversion_absoluteHeight="112dp"
+            tools:layout_conversion_absoluteWidth="126dp"
+            tools:layout_conversion_absoluteX="0dp"
+            tools:layout_conversion_absoluteY="0dp"/>
+
+
+    </android.support.constraint.ConstraintLayout>
 
 
 </RelativeLayout>

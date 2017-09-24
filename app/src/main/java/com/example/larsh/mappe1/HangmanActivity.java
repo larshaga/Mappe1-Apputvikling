@@ -3,7 +3,9 @@ package com.example.larsh.mappe1;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
+import android.graphics.drawable.AnimatedStateListDrawable;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -13,14 +15,20 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
 import java.util.Random;
 
 import static com.example.larsh.mappe1.R.id.LettersLayout;
+import static com.example.larsh.mappe1.R.id.btn_æ;
+import static com.example.larsh.mappe1.R.id.btn_ø;
+import static com.example.larsh.mappe1.R.id.hangman_arm_left;
+import static com.example.larsh.mappe1.R.id.hangman_body;
+import static com.example.larsh.mappe1.R.id.hangman_head;
+import static com.example.larsh.mappe1.R.id.hangman_leg_left;
 import static com.example.larsh.mappe1.R.id.text;
 
 public class HangmanActivity extends AppCompatActivity
@@ -34,14 +42,12 @@ public class HangmanActivity extends AppCompatActivity
     TextView[] textViewArray;
 
 
-
-
     @Override
     protected void onCreate( Bundle savedInstanceState )
     {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        int countHowManyTimesYouHaveWon = preferences.getInt("HOWMANYTIMESYOUHAVEWON",-1);
+        int countHowManyTimesYouHaveWon = preferences.getInt("HOWMANYTIMESYOUHAVEWON", -1);
 
         Log.i("howManyTimesfromsave", String.valueOf(countHowManyTimesYouHaveWon));
 
@@ -443,9 +449,9 @@ public class HangmanActivity extends AppCompatActivity
         });
 
 
-        // Checks if the locale is norwegian 'nb', if not returns.
+        /*// Checks if the locale is norwegian 'nb'.
         if (Locale.getDefault().getLanguage().contains("nb"))
-        {
+        {*/
 
             btn_æ.setOnClickListener(new View.OnClickListener()
             {
@@ -453,11 +459,13 @@ public class HangmanActivity extends AppCompatActivity
                 public void onClick( View v )
                 {
 
+                    Log.i("Æ", "æ is pressed");
                     if (checkNumberOfTries())
                     {
                         isCharInWord("æ");
                         btn_æ.setEnabled(false);
                     }
+
                 }
             });
 
@@ -467,6 +475,7 @@ public class HangmanActivity extends AppCompatActivity
                 public void onClick( View v )
                 {
 
+                    Log.i("ø", "ø is pressed");
                     if (checkNumberOfTries())
                     {
                         isCharInWord("ø");
@@ -476,27 +485,37 @@ public class HangmanActivity extends AppCompatActivity
                 }
             });
 
+
             btn_å.setOnClickListener(new View.OnClickListener()
             {
 
                 public void onClick( View v )
                 {
 
+                    Log.i("å","å is pressed");
                     if (checkNumberOfTries())
                     {
                         isCharInWord("å");
                         btn_å.setEnabled(false);
                     }
+
                 }
             });
 
-        }
+    //    }
 
     }
 
 
     boolean isCharInWord( String guessedCharacter )
     {
+
+        ImageView hangmanHead = (ImageView) findViewById(R.id.hangman_head);
+        ImageView hangmanBody = (ImageView) findViewById(R.id.hangman_body);
+        ImageView hangmanArmLeft = (ImageView) findViewById(R.id.hangman_arm_left);
+        ImageView hangmanArmRight = (ImageView) findViewById(R.id.hangman_arm_right);
+        ImageView hangmanLegLeft = (ImageView) findViewById(R.id.hangman_leg_left);
+        ImageView hangmanLegRight = (ImageView) findViewById(R.id.hangman_leg_right);
 
         if (selectedWord.toLowerCase().contains(guessedCharacter))
         {
@@ -532,9 +551,32 @@ public class HangmanActivity extends AppCompatActivity
             numberOfWrongtries++;
             Log.i("Char", "False! " + "You have tried: " + numberOfWrongtries + " number of times." + "\n" + "You have tries " + (6 - numberOfWrongtries) + "left");
             //add another hangman figure
+            switch (numberOfWrongtries)
+            {
+                case 1:
+                    hangmanHead.setVisibility(View.VISIBLE);
+                    break;
+                case 2:
+                    hangmanBody.setVisibility(View.VISIBLE);
+                    break;
+                case 3:
+                    hangmanArmLeft.setVisibility(View.VISIBLE);
+                    break;
+                case 4:
+                    hangmanArmRight.setVisibility(View.VISIBLE);
+                    break;
+                case 5:
+                    hangmanLegLeft.setVisibility(View.VISIBLE);
+                    break;
+                case 6:
+                    hangmanLegRight.setVisibility(View.VISIBLE);
+                    break;
+            }
+
 
             return false;
         }
+
 
     }
 
@@ -581,7 +623,7 @@ public class HangmanActivity extends AppCompatActivity
     boolean checkNumberOfTries( )
     {
 
-        if (numberOfWrongtries < 6)
+        if (numberOfWrongtries < 5)
         {
 
             return true;
@@ -641,21 +683,19 @@ public class HangmanActivity extends AppCompatActivity
         }
     }
 
-    protected void onPause()
+    protected void onPause( )
     {
+
         super.onPause();
 
-        getSharedPreferences("PREFERENCE",MODE_PRIVATE)
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .edit()
-                .putInt("HOWMANYTIMESYOUHAVEWON",countHowManyTimesYouHaveWon)
+                .putInt("HOWMANYTIMESYOUHAVEWON", countHowManyTimesYouHaveWon)
                 .apply();
 
         Log.i("HangmanWonSaved", String.valueOf(countHowManyTimesYouHaveWon));
 
     }
-
-
-
 
 
 }
