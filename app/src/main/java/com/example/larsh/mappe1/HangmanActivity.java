@@ -40,6 +40,7 @@ public class HangmanActivity extends AppCompatActivity
     String selectedWord;
     int numberOfCorrectChars = 0;
     int countHowManyTimesYouHaveWon;
+    int countHowMantTimesYouHaveLost;
     TextView[] textViewArray;
 
 
@@ -630,6 +631,7 @@ public class HangmanActivity extends AppCompatActivity
         Intent youAreDead = new Intent(this, DeadActivity.class);
         youAreDead.putExtra("selectedWord", selectedWord);
         startActivity(youAreDead);
+        countHowMantTimesYouHaveLost++;
         return false;
     }
 
@@ -691,8 +693,10 @@ public class HangmanActivity extends AppCompatActivity
                 .edit()
                 .putInt("HOWMANYTIMESYOUHAVEWON", countHowManyTimesYouHaveWon)
                 .apply();
-
-        Log.i("HangmanWonSaved", String.valueOf(countHowManyTimesYouHaveWon));
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .edit()
+                .putInt("HOWMANYTIMESYOUHAVELOST", countHowMantTimesYouHaveLost)
+                .apply();
 
     }
 

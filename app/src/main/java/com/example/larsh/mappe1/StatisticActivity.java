@@ -29,14 +29,10 @@ public class StatisticActivity extends AppCompatActivity
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         int howManyTimesUserWon = preferences.getInt("HOWMANYTIMESYOUHAVEWON",-1);
+        int howManyTimesUserLost = preferences.getInt("HOWMANYTIMESYOUHAVELOST",-1);
 
-
-
-
-        //editHowManyTimesWon(getSharedPreferences("PREFRENCE",MODE_PRIVATE).getInt("HOWMANYTIMESYOUHAVEWON",""));
-        //editHowManyTimesLost(getSharedPreferences("PREFRENCE",MODE_PRIVATE).getInt("HOWMANYTIMESYOUHAVEWON",""));
-
-        Log.i("StatsWon", String.valueOf(howManyTimesUserWon));
+        editHowManyTimesWon.setText(howManyTimesUserWon);
+        editHowManyTimesLost.setText(howManyTimesUserLost);
 
 
     }

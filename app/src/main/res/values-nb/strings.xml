@@ -7,15 +7,14 @@
     <string name="statistics">Statistikk</string>
     <string name="explainrules">Regler: Spilleren skal prøve å gjette et ord og har begrenset med gjettinger, hvis spilleren ikke klarer å gjette ordet innenfor antall gjetninger, vil spilleren henges. Trykk på tilbake knappen oppe å venste hjørne for å komme tilbake til menyen.</string>
     <string name="you_are_dead">Du ble hengt!</string>
-    <string name="wanna_play_more">Vil du spille en gang til?</string>
+    <string name="wanna_play_more">Vil du spille en gang til? Trykk på knappen nedenfor</string>
     <string name="you_won">Du vant!</string>
-    <string name="you_won_message">Congratulations, you managed to guess the word. Do you want to play again?</string>
+    <string name="you_won_message">Gratulerer, du klarte å gjette ordet. Vil du prøve å spille igjen?</string>
     <string name="how_many_times_you_have_won">Hvor mange ganger du har vunnet:</string>
     <string name="how_many_times_you_have_lost">Hvor mange ganger du har tapt:</string>
-    <string name="press_me_to_play_again">Trykk på meg for å spille mer!</string>
+    <string name="press_me_to_play_again">Trykk på meg for å spill en gang til!</string>
     <string name="selected_word_was">Det valgte ordet var:</string>
-    <string name="language_to_nor">Language changed to Norwegian</string>
-    <string name="language_to_eng">Language changed to English</string>
-    <string name="hanging_man">A hanging man</string>
-
+    <string name="language_to_nor">Språk endret til Norsk</string>
+    <string name="language_to_eng">Språk endret til Engelsk</string>
+    <string name="hanging_man">En hengt mann</string>
 </resources>
