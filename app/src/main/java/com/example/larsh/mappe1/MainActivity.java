@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+
         btn_Language.setOnClickListener(new View.OnClickListener()
         {
 
@@ -71,8 +72,9 @@ public class MainActivity extends AppCompatActivity
 
 
                     Toast langToNor = Toast.makeText(MainActivity.this, R.string.language_to_nor, Toast.LENGTH_LONG);
-                    langToNor.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL,0,0);
+                    langToNor.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
                     langToNor.show();
+
 
                     recreate();
 
@@ -87,8 +89,9 @@ public class MainActivity extends AppCompatActivity
                     getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
                     Toast langToEng = Toast.makeText(MainActivity.this, R.string.language_to_eng, Toast.LENGTH_LONG);
-                    langToEng.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL,0,0);
+                    langToEng.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
                     langToEng.show();
+
 
                     recreate();
                 }

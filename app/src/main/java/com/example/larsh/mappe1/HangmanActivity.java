@@ -3,6 +3,7 @@ package com.example.larsh.mappe1;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
 import android.graphics.drawable.AnimatedStateListDrawable;
@@ -449,60 +450,58 @@ public class HangmanActivity extends AppCompatActivity
         });
 
 
-        /*// Checks if the locale is norwegian 'nb'.
-        if (Locale.getDefault().getLanguage().contains("nb"))
-        {*/
+        // Checks if the locale is norwegian 'nb'.
+        if (getResources().getConfiguration().locale.getLanguage().contains("nb"))
 
-            btn_æ.setOnClickListener(new View.OnClickListener()
+            if (Locale.getDefault().getLanguage().contains("nb"))
             {
 
-                public void onClick( View v )
+                btn_æ.setOnClickListener(new View.OnClickListener()
                 {
 
-                    Log.i("Æ", "æ is pressed");
-                    if (checkNumberOfTries())
+                    public void onClick( View v )
                     {
-                        isCharInWord("æ");
-                        btn_æ.setEnabled(false);
+
+                        if (checkNumberOfTries())
+                        {
+                            isCharInWord("æ");
+                            btn_æ.setEnabled(false);
+                        }
+
                     }
+                });
 
-                }
-            });
-
-            btn_ø.setOnClickListener(new View.OnClickListener()
-            {
-
-                public void onClick( View v )
+                btn_ø.setOnClickListener(new View.OnClickListener()
                 {
 
-                    Log.i("ø", "ø is pressed");
-                    if (checkNumberOfTries())
+                    public void onClick( View v )
                     {
-                        isCharInWord("ø");
-                        btn_ø.setEnabled(false);
+
+                        if (checkNumberOfTries())
+                        {
+                            isCharInWord("ø");
+                            btn_ø.setEnabled(false);
+                        }
+
                     }
-
-                }
-            });
+                });
 
 
-            btn_å.setOnClickListener(new View.OnClickListener()
-            {
-
-                public void onClick( View v )
+                btn_å.setOnClickListener(new View.OnClickListener()
                 {
 
-                    Log.i("å","å is pressed");
-                    if (checkNumberOfTries())
+                    public void onClick( View v )
                     {
-                        isCharInWord("å");
-                        btn_å.setEnabled(false);
+
+                        if (checkNumberOfTries())
+                        {
+                            isCharInWord("å");
+                            btn_å.setEnabled(false);
+                        }
+
                     }
-
-                }
-            });
-
-    //    }
+                });
+            }
 
     }
 
